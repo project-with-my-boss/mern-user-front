@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const API_URL = "https://mern-user-back.onrender.com"; 
+const API_URL = "https://mern-user-back.onrender.com/api/users"; 
 
 export const getUsers = async () => {
   const response = await axios.get(API_URL);
