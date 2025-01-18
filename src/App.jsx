@@ -39,6 +39,9 @@ const App = () => {
       
       const handleCreate = async (e) => {
     e.preventDefault();
+        if(!name || !email) {
+          toast.warning("enter a valid name and email")
+        }
     try {
       await createUser(formData);
       toast.success("User created successfully!");
