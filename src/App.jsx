@@ -93,15 +93,14 @@ const App = () => {
       <div className="max-w-4xl mx-auto bg-white rounded shadow p-6">
         <h1 className="text-2xl font-bold mb-4">User Management</h1>
 
-
-        <div className="mb-6">
+        <div className="mb-6 flex flex-wrap">
           <input
             type="text"
             name="name"
             value={name}
             onChange={handleInputChange}
             placeholder="Name"
-            className="border border-gray-300 rounded px-4 py-2 mr-2 w-1/3"
+            className="border border-gray-300 rounded px-4 py-2 mr-2 mb-2 w-full sm:w-1/2 lg:w-1/3"
           />
           <input
             type="email"
@@ -109,32 +108,30 @@ const App = () => {
             value={email}
             onChange={handleInputChange}
             placeholder="Email"
-            className="border border-gray-300 rounded px-4 py-2 mr-2 w-1/3"
+            className="border border-gray-300 rounded px-4 py-2 mr-2 mb-2 w-full sm:w-1/2 lg:w-1/3"
           />
           {editingUser ? (
             <button
               onClick={handleUpdate}
-              className="bg-blue-500 text-white px-4 py-2 rounded"
-              >
+              className="bg-blue-500 text-white px-4 py-2 rounded w-full sm:w-auto"
+            >
               Update
             </button>
           ) : (
             <button
               onClick={handleCreate}
-              className="bg-green-500 text-white px-4 py-2 rounded"
-              >
+              className="bg-green-500 text-white px-4 py-2 rounded w-full sm:w-auto"
+            >
               Create
             </button>
           )}
         </div>
 
-
-          {isLoading && (
-            <div className="relative flex justify-center items-center my-6 mr-4">
-               <img src={logo} alt="loading..." className="w-12 h-12 animate-spin" />
-            </div>
-          ) }
-
+        {isLoading && (
+          <div className="relative flex justify-center items-center my-6 mr-4">
+            <img src={logo} alt="loading..." className="w-12 h-12 animate-spin" />
+          </div>
+        )}
 
         <table className="w-full border-collapse border border-gray-300">
           <thead>
@@ -146,39 +143,36 @@ const App = () => {
             </tr>
           </thead>
 
-
           <tbody>
-            
-          {users.length > 0 ? (
-          users.map((user, index) => (
-    <tr key={user._id} className="hover:bg-gray-100">
-      <td className="border border-gray-300 px-4 py-2 text-center">
-        {index + 1}
-      </td>
-      <td className="border border-gray-300 px-4 py-2">{user.name}</td>
-      <td className="border border-gray-300 px-4 py-2">{user.email}</td>
-      <td className="border border-gray-300 px-4 py-2 text-center">
-        <button
-          onClick={() => handleEdit(user)}
-          className="w-fit bg-yellow-600 my-4 mx-auto md:bg-yellow-500 text-white px-3 py-1 rounded mr-2"
-        >
-          Edit
-        </button>
-        <button
-          onClick={() => handleDelete(user._id)}
-          className="w-fit bg-red-600 mx-auto my-4 md:bg-red-500 text-white px-3 py-1 rounded"
-        >
-          Delete
-        </button>
-      </td>
-    </tr>
-  ))
-) : (
-  <tr>
-    <td colSpan="4" className="text-center py-4">No users found</td>
-  </tr>
-)}
-
+            {users.length > 0 ? (
+              users.map((user, index) => (
+                <tr key={user._id} className="hover:bg-gray-100">
+                  <td className="border border-gray-300 px-4 py-2 text-center">
+                    {index + 1}
+                  </td>
+                  <td className="border border-gray-300 px-4 py-2">{user.name}</td>
+                  <td className="border border-gray-300 px-4 py-2">{user.email}</td>
+                  <td className="border border-gray-300 px-4 py-2 text-center">
+                    <button
+                      onClick={() => handleEdit(user)}
+                      className="w-full sm:w-auto bg-yellow-600 my-4 mx-auto md:bg-yellow-500 text-white px-3 py-1 rounded mr-2"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleDelete(user._id)}
+                      className="w-full sm:w-auto bg-red-600 mx-auto my-4 md:bg-red-500 text-white px-3 py-1 rounded"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="4" className="text-center py-4">No users found</td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
@@ -187,3 +181,4 @@ const App = () => {
 };
 
 export default App;
+
